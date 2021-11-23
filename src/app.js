@@ -2,8 +2,9 @@ var express = require('express');
 var fs = require('fs');
 var cors = require('cors');
 var app = express();
+var cookies = require("cookie-parser");
 var bodyParser = require('body-parser');
-
+app.use(cookies());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser());
@@ -132,7 +133,6 @@ app.post('/enviar-formulario', function(req, res) {
     });
     });
     res.cookie("PW_2021-CV_Contacto", nombreContacto, {
-      httpOnly: true,
       });
     res.send("OK");
   }
